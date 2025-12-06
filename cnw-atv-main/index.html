@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur & Brayan - Página Inicial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #000 0%, #0066cc 100%);
+            padding: 50px 0;
+            text-align: center;
+            border-bottom: 5px solid #00aaff;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #00aaff;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            padding: 20px 0 80px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .intro h2 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: #00aaff;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #00aaff;
+            border-radius: 2px;
+        }
+        
+        .intro p {
+            font-size: 20px;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .profiles {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .profile-card {
+            background: #111;
+            border-radius: 20px;
+            width: 380px;
+            overflow: hidden;
+            border: 3px solid #0066cc;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0, 102, 204, 0.25);
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 102, 204, 0.5);
+            border-color: #00aaff;
+        }
+        
+        .card-header {
+            background: linear-gradient(90deg, #000 0%, #0066cc 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00aaff;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #000 0%, #0066cc 100%);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #00aaff;
+            border: 4px solid #00aaff;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+        }
+        
+        .card-header h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .card-header p {
+            color: #00aaff;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .card-body {
+            padding: 40px 30px;
+        }
+        
+        .skills h4 {
+            font-size: 20px;
+            color: #00aaff;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(90deg, #0066cc 0%, #00aaff 100%);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+        }
+        
+        .btn {
+            display: block;
+            background: linear-gradient(90deg, #0066cc 0%, #00aaff 100%);
+            color: white;
+            text-align: center;
+            padding: 18px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
+        }
+        
+        .btn:hover {
+            background: linear-gradient(90deg, #00aaff 0%, #0066cc 100%);
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(0, 170, 255, 0.6);
+        }
+        
+        .btn i {
+            margin-right: 10px;
+        }
+        
+        footer {
+            background: #000;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+            border-top: 3px solid #0066cc;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #aaa;
+            font-size: 16px;
+        }
+        
+        .footer-item i {
+            color: #00aaff;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 15px;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .profiles {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .profile-card {
+                width: 100%;
+                max-width: 450px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .intro h2 {
+                font-size: 28px;
+            }
+            
+            .logo {
+                font-size: 50px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h1>Arthur & Brayan</h1>
+            <p class="subtitle">Dupla para trabalho de CNW - Site desenvolvido com Microsoft Azure</p>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <section class="intro fade-in">
+            <h2>Nossa Dupla</h2>
+            <p>Desenvolvemos este site seguindo as instruções do professor, utilizando Microsoft Azure para hospedagem. Dois profissionais com habilidades complementares, preparados para enfrentar os desafios do mercado de tecnologia.</p>
+        </section>
+
+        <section class="profiles">
+            <div class="profile-card fade-in">
+                <div class="card-header">
+                    <div class="avatar">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Arthur Silva</h3>
+                    <p>Desenvolvedor Full Stack & Estudante de TI</p>
+                </div>
+                <div class="card-body">
+                    <div class="skills">
+                        <h4><i class="fas fa-star"></i> Principais Habilidades</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Inteligência Artificial</span>
+                        </div>
+                    </div>
+                    <a href="curriculos.html" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Ver Currículo Completo
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-card fade-in" style="animation-delay: 0.2s;">
+                <div class="card-header">
+                    <div class="avatar">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Brayan Charles</h3>
+                    <p>Designer UX/UI & Estudante de TI</p>
+                </div>
+                <div class="card-body">
+                    <div class="skills">
+                        <h4><i class="fas fa-star"></i> Principais Habilidades</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">HTML5/CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">Python</span>
+                        </div>
+                    </div>
+                    <a href="curriculos.html" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Ver Currículo Completo
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Trabalho Acadêmico - CNW</span>
+                </div>
+                <div class="footer-item">
+                    <i class="fas fa-cloud"></i>
+                    <span>Hospedado no Microsoft Azure</span>
+                </div>
+                <div class="footer-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Dezembro de 2025</span>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Arthur Silva & Brayan Charles. Todos os direitos reservados.</p>
+                <p>Projeto desenvolvido para a disciplina de Construção de Websites.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

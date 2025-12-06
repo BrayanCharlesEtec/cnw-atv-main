@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur & Brayan - Currículos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #000 0%, #0066cc 100%);
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 5px solid #00aaff;
+            margin-bottom: 50px;
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #00aaff;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #00aaff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .home-btn:hover {
+            background: #0066cc;
+            transform: scale(1.05);
+        }
+        
+        .curriculos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .curriculo-card {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid #0066cc;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.2);
+        }
+        
+        .curriculo-card:hover {
+            border-color: #00aaff;
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.4);
+        }
+        
+        .curriculo-header {
+            background: linear-gradient(90deg, #000 0%, #0066cc 100%);
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .curriculo-header:hover {
+            background: linear-gradient(90deg, #000 0%, #0055aa 100%);
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #000 0%, #0066cc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #00aaff;
+            border: 3px solid #00aaff;
+            flex-shrink: 0;
+        }
+        
+        .header-info {
+            flex-grow: 1;
+        }
+        
+        .header-info h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .header-info p {
+            color: #00aaff;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .contact-item i {
+            color: #00aaff;
+        }
+        
+        .expand-btn {
+            background: #00aaff;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .expand-btn:hover {
+            background: #0066cc;
+            transform: scale(1.1);
+        }
+        
+        .curriculo-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #0a0a0a;
+        }
+        
+        .curriculo-expanded {
+            max-height: 2000px;
+        }
+        
+        .content-inner {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h3 {
+            color: #00aaff;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0066cc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #0066cc;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .item-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .item-period {
+            background: #0066cc;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .item-subtitle {
+            color: #00aaff;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .item-description {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(90deg, #0066cc 0%, #00aaff 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .curriculo-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            .content-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 25px;
+            }
+            
+            .home-btn {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 20px auto;
+                width: fit-content;
+                display: block;
+            }
+            
+            .curriculo-container {
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h1>Currículos Completos</h1>
+            <p class="subtitle">Clique em cada currículo para expandir e ver todas as informações</p>
+        </div>
+    </header>
+
+    <div class="container curriculos-container">
+        
+        <div class="curriculo-card">
+            <div class="curriculo-header" onclick="toggleCurriculo('arthur')">
+                <div class="avatar">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="header-info">
+                    <h2>Arthur Silva</h2>
+                    <p>Estudante de TI & Desenvolvedor</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>arthur.silva450@etec.sp.gov.br</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(11) 93489-1494</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Ribeirão Pires, SP</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="expand-btn" id="arthur-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            
+            <div class="curriculo-content" id="arthur-content">
+                <div class="content-inner">
+                    <div class="column">
+                        <div class="section">
+                            <h3><i class="fas fa-user"></i> Sobre</h3>
+                            <p style="color: #ccc; line-height: 1.6;">
+                                Estudante de TI na ETEC MCM desde 2024, apaixonado por tecnologia e desenvolvimento de software. 
+                                Foco em soluções inovadoras usando as mais recentes tecnologias do mercado.
+                            </p>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-briefcase"></i> Experiência</h3>
+                            <div class="section-item">
+                                <div class="item-header">
+                                    <div class="item-title">Estágio - Suporte Técnico</div>
+                                    <div class="item-period">2023 - 2024</div>
+                                </div>
+                                <div class="item-subtitle">BG Genéricos</div>
+                                <div class="item-description">
+                                    Suporte técnico a usuários, manutenção de sistemas e configuração de equipamentos.
+                                </div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-header">
+                                    <div class="item-title">Estágio em Informática</div>
+                                    <div class="item-period">2022 - 2023</div>
+                                </div>
+                                <div class="item-subtitle">Microlins</div>
+                                <div class="item-description">
+                                    Auxílio em aulas de informática básica e suporte aos alunos.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-graduation-cap"></i> Formação</h3>
+                            <div class="section-item">
+                                <div class="item-header">
+                                    <div class="item-title">Ensino Médio Técnico em Informática</div>
+                                    <div class="item-period">2024 - 2026</div>
+                                </div>
+                                <div class="item-subtitle">ETEC MCM</div>
+                                <div class="item-description">
+                                    Curso técnico integrado com foco em desenvolvimento de sistemas e redes.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column">
+                        <div class="section">
+                            <h3><i class="fas fa-star"></i> Habilidades</h3>
+                            <div class="skills-container">
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Git/GitHub</span>
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">HTML5/CSS3</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Suporte Técnico</span>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-certificate"></i> Certificações</h3>
+                            <div class="section-item">
+                                <div class="item-title">Profissionalização em IA</div>
+                                <div class="item-subtitle">Fundação Santander</div>
+                                <div class="item-period">2025</div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-title">Azure Fundamentals</div>
+                                <div class="item-subtitle">Microsoft</div>
+                                <div class="item-period">2024</div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-language"></i> Idiomas</h3>
+                            <div class="section-item">
+                                <div class="item-title">Português</div>
+                                <div class="item-subtitle">Nativo</div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-title">Inglês</div>
+                                <div class="item-subtitle">Avançado (C1)</div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-title">Espanhol</div>
+                                <div class="item-subtitle">Intermediário (B1)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="curriculo-card">
+            <div class="curriculo-header" onclick="toggleCurriculo('brayan')">
+                <div class="avatar">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="header-info">
+                    <h2>Brayan Charles</h2>
+                    <p>Designer UX/UI & Estudante de TI</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>brayan.charles@email.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(11) 98765-4321</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Ribeirão Pires, SP</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="expand-btn" id="brayan-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            
+            <div class="curriculo-content" id="brayan-content">
+                <div class="content-inner">
+                    <div class="column">
+                        <div class="section">
+                            <h3><i class="fas fa-user"></i> Sobre</h3>
+                            <p style="color: #ccc; line-height: 1.6;">
+                                Estudante do 2º ano do Ensino Médio Técnico em Informática na ETEC Cristina Maria Medeiros. 
+                                Apaixonado por tecnologia, design e desenvolvimento web. Buscando constantemente aprender 
+                                novas ferramentas e tecnologias para criar soluções inovadoras.
+                            </p>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-briefcase"></i> Experiência</h3>
+                            <div class="section-item">
+                                <div class="item-header">
+                                    <div class="item-title">Freelancer - Design Web</div>
+                                    <div class="item-period">2023 - Atual</div>
+                                </div>
+                                <div class="item-subtitle">Trabalhos Autônomos</div>
+                                <div class="item-description">
+                                    Criação de layouts e identidade visual para pequenos negócios locais. 
+                                    Desenvolvimento de sites institucionais com foco em UX/UI.
+                                </div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-header">
+                                    <div class="item-title">Estágio em Suporte Técnico</div>
+                                    <div class="item-period">2022 - 2023</div>
+                                </div>
+                                <div class="item-subtitle">Tech Solutions RJ</div>
+                                <div class="item-description">
+                                    Suporte a usuários, manutenção de computadores e configuração de redes locais.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-graduation-cap"></i> Formação</h3>
+                            <div class="section-item">
+                                <div class="item-header">
+                                    <div class="item-title">Ensino Médio Técnico em Informática</div>
+                                    <div class="item-period">2024 - 2026</div>
+                                </div>
+                                <div class="item-subtitle">ETEC Cristina Maria Medeiros</div>
+                                <div class="item-description">
+                                    Curso técnico integrado ao ensino médio com foco em desenvolvimento de sistemas, 
+                                    redes de computadores e manutenção de hardware.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column">
+                        <div class="section">
+                            <h3><i class="fas fa-star"></i> Habilidades</h3>
+                            <div class="skills-container">
+                                <span class="skill-tag">HTML5/CSS3</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">UI/UX Design</span>
+                                <span class="skill-tag">Photoshop</span>
+                                <span class="skill-tag">Git/GitHub</span>
+                                <span class="skill-tag">Azure Basics</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Suporte Técnico</span>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-certificate"></i> Certificações</h3>
+                            <div class="section-item">
+                                <div class="item-title">Microsoft Azure Fundamentals</div>
+                                <div class="item-subtitle">Microsoft</div>
+                                <div class="item-period">2024</div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-title">Python para Iniciantes</div>
+                                <div class="item-subtitle">Alura</div>
+                                <div class="item-period">2023</div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-title">Inglês Intermediário</div>
+                                <div class="item-subtitle">Cultura Inglesa</div>
+                                <div class="item-period">2022</div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-title">Introdução ao Figma</div>
+                                <div class="item-subtitle">Udemy</div>
+                                <div class="item-period">2023</div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <h3><i class="fas fa-language"></i> Idiomas</h3>
+                            <div class="section-item">
+                                <div class="item-title">Português</div>
+                                <div class="item-subtitle">Nativo</div>
+                            </div>
+                            <div class="section-item">
+                                <div class="item-title">Inglês</div>
+                                <div class="item-subtitle">Intermediário (B1)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCurriculo(person) {
+            const content = document.getElementById(`${person}-content`);
+            const btn = document.getElementById(`${person}-btn`);
+            const icon = btn.querySelector('i');
+            
+            content.classList.toggle('curriculo-expanded');
+            
+            if (content.classList.contains('curriculo-expanded')) {
+                icon.className = 'fas fa-chevron-up';
+                btn.style.transform = 'scale(1.1)';
+            } else {
+                icon.className = 'fas fa-chevron-down';
+                btn.style.transform = 'scale(1)';
+            }
+            
+            const otherPerson = person === 'arthur' ? 'brayan' : 'arthur';
+            const otherContent = document.getElementById(`${otherPerson}-content`);
+            const otherBtn = document.getElementById(`${otherPerson}-btn`);
+            const otherIcon = otherBtn.querySelector('i');
+            
+            if (otherContent.classList.contains('curriculo-expanded')) {
+                otherContent.classList.remove('curriculo-expanded');
+                otherIcon.className = 'fas fa-chevron-down';
+                otherBtn.style.transform = 'scale(1)';
+            }
+        }
+    </script>
+</body>
+</html>
